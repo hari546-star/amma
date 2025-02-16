@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Butterfly Animation</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: linear-gradient(to bottom, #a7d0ff, #ffffff);
+      position: relative;
+      font-family: Arial, sans-serif;
+    }
+
+    .butterfly {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-image: url('https://i.ibb.co/Rknnv9td/butterfly.jpg'); /* Butterfly image URL */
+      background-size: cover;
+      animation: fly 8s infinite linear;
+    }
+
+    @keyframes fly {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      50% {
+        transform: translate(100vw, 50vh) rotate(360deg);
+      }
+      100% {
+        transform: translate(0, 0) rotate(720deg);
+      }
+    }
+
+    .message {
+      position: absolute;
+      top: 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #ff69b4;
+    }
+  </style>
+</head>
+<body>
+  <div class="message">Love you, Amma Nanna💕💕💕💕
+  </div>
+  <script>
+    document.addEventListener('click', function(event) {
+      const butterfly = document.createElement('div');
+      butterfly.classList.add('butterfly');
+      butterfly.style.left = `${event.clientX - 50}px`; // Center the butterfly
+      butterfly.style.top = `${event.clientY - 50}px`;  // Center the butterfly
+      document.body.appendChild(butterfly);
+
+      // Remove the butterfly after the animation ends
+      butterfly.addEventListener('animationend', () => {
+        document.body.removeChild(butterfly);
+      });
+    });
+  </script>
+</body>
+</html>
